@@ -1,0 +1,106 @@
+<meta charset="UTF-8">
+
+
+<select id="id_seven_number" onchange="select_number(this.options[this.options.selectedIndex].value);">
+	<option>0</option>
+	<option>1</option>
+	<option>2</option>
+	<option>3</option>
+	<option>4</option>
+	<option>5</option>
+	<option>6</option>
+	<option>7</option>
+	<option>8</option>
+	<option>9</option>
+</select>
+<input type="button" value="送出" onclick="show_date();"/>
+
+<script>
+
+	var base_time = new Date(2014, 3, 1);
+	var now_time = new Date();
+	
+	var set = new Array();
+		set[0] = 'A';
+		set[1] = 'A';
+		set[2] = 'B';
+		set[3] = 'B';
+		set[4] = 'C';
+		set[5] = 'C';
+		set[6] = 'D';
+		set[7] = 'D';
+		set[8] = 'E';
+		set[9] = 'E';
+		
+	
+	console.log(set);
+
+	var val = new Array();
+		val[0] = '一';
+		val[1] = '二';
+		val[2] = '三';
+		val[3] = '四';
+		val[4] = '五';
+	
+	function show_date()
+	{
+		var form = document.getElementById('id_seven_number');
+	
+		for(var i=0; i<form.options.length; i++)
+		{
+			if(form.options[i].selected == true)
+			{
+			
+
+			
+				/*console.log(i + ' yes	');
+				
+				console.log(set[i]);
+				
+				console.log(base_time);
+				console.log(now_time);
+				
+				console.log(now_time - base_time);
+				console.log(1000 * 60 * 60 * 24);*/
+				var diff = parseInt(Math.abs(now_time - base_time)/(1000 * 60 * 60 * 24));
+				console.log(diff);
+				
+				/*console.log(new Date(now_time - base_time));
+				
+				
+				console.log(base_time.setDate(base_time.getDate() + diff));
+				console.log(base_time);*/
+				
+				date_list(diff)
+			}
+		
+		}
+
+	}
+	
+	function date_list(diff)
+	{
+		for(var i=0; i<=diff; i++)
+		{
+			now_time.setDate(base_time.getDate() + i);
+			console.log(i+' - '+now_time);
+		}
+	
+	
+	}
+	
+	function select_number(number)
+	{
+	
+		var set = document.getElementById('id_seven_number');
+			
+		set.options[number].selected = true;
+		
+	}
+	
+	
+	
+
+
+	
+</script>
