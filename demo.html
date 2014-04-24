@@ -13,11 +13,11 @@
 	<option>8</option>
 	<option>9</option>
 </select>
-<input type="button" value="送出" onclick="show_date();"/>
+<input type="button" value="go" onclick="show_date();"/>
 
 <script>
 
-	var base_time = new Date(2014, 3, 1);
+	var base_time = new Date(2014, 3, 1);	//2014-4-1
 	var now_time = new Date();
 	
 	var set = new Array();
@@ -36,11 +36,11 @@
 	console.log(set);
 
 	var val = new Array();
-		val[0] = '一';
-		val[1] = '二';
-		val[2] = '三';
-		val[3] = '四';
-		val[4] = '五';
+		val[0] = 'black';
+		val[1] = 'blue';
+		val[2] = 'white';
+		val[3] = 'red';
+		val[4] = 'green';
 	
 	function show_date()
 	{
@@ -80,7 +80,7 @@
 	
 	function date_list(diff)
 	{
-		for(var i=0; i<=diff; i++)
+		for(var i=1; i<=diff; i++)
 		{
 			now_time.setDate(base_time.getDate() + i);
 			console.log(i+' - '+now_time);
