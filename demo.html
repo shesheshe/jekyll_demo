@@ -17,8 +17,11 @@
 
 <script>
 
-	var base_time = new Date(2014, 3, 1);	//2014-4-1
+	var base_time = new Date(2014, 3, 1);	//2014-4-21
 	var now_time = new Date();
+
+	var base_time_tmp = new Date();
+	var now_time_tmp = new Date();
 	
 	var set = new Array();
 		set[0] = 'A';
@@ -32,58 +35,64 @@
 		set[8] = 'E';
 		set[9] = 'E';
 		
-	
-	console.log(set);
-
+	var set2number = new Array();
+		set2number['A'] = 0;
+		set2number['B'] = 1;
+		set2number['C'] = 2;
+		set2number['D'] = 3;
+		set2number['E'] = 4;
+		
 	var val = new Array();
 		val[0] = 'black';
 		val[1] = 'blue';
 		val[2] = 'white';
 		val[3] = 'red';
 		val[4] = 'green';
-	
+		
+	var val_date_class = new Array2DVar(1, 5);
+		val_date_class[0][0] = '11:00, 16:00, 21:00';
+		val_date_class[0][1] = '7:00, 12:00, 17:00';
+		val_date_class[0][2] = '8:00, 13:00, 18:00';
+		val_date_class[0][3] = '9:00, 14:00, 19:00';
+		val_date_class[0][4] = '10:00, 15:00, 20:00';
+
+
+	console.log(val_date_class[0][2]);
+		
 	function show_date()
 	{
 		var form = document.getElementById('id_seven_number');
+		var nowDay = 0;
+		var nextDays = 7;
 	
 		for(var i=0; i<form.options.length; i++)
 		{
 			if(form.options[i].selected == true)
 			{
-			
-
-			
-				/*console.log(i + ' yes	');
+				var diff = parseInt(Math.abs(now_time - base_time)/(1000 * 60 * 60 * 24));
 				
 				console.log(set[i]);
-				
-				console.log(base_time);
-				console.log(now_time);
-				
-				console.log(now_time - base_time);
-				console.log(1000 * 60 * 60 * 24);*/
-				var diff = parseInt(Math.abs(now_time - base_time)/(1000 * 60 * 60 * 24));
-				console.log(diff);
-				
-				/*console.log(new Date(now_time - base_time));
-				
-				
-				console.log(base_time.setDate(base_time.getDate() + diff));
-				console.log(base_time);*/
-				
-				date_list(diff+1)
+				date_list(diff, nextDays, set2number[set[i]]);
 			}
 		
 		}
 
 	}
 	
-	function date_list(diff)
+	function date_list(diff, nextDays, _class)
 	{
-		for(var i=1; i<=diff; i++)
+		console.log('0 - ' + 
+			        val[(diff)%5] + ' - ' + 
+					val_date_class[_class][(diff)%5] + ' - ' + 
+					now_time);
+						
+		for(var i=0; i<nextDays-1; i++)
 		{
-			now_time.setDate(base_time.getDate() + i);
-			console.log(i+' - '+now_time);
+			now_time.setDate(now_time.getDate() + 1);
+			console.log((i+1) + ' - ' + 
+			            val[(diff+i+1)%5] + ' - ' + 
+						val_date_class[_class][(diff+i+1)%5] + ' - ' + 
+						now_time);
 		}
 	
 	
@@ -98,7 +107,13 @@
 		
 	}
 	
-	
+	function Array2DVar(x,y) {
+	  this.length = x;
+	  this.x = x;
+	  this.y = y;
+	  for(var i = 0; i < this.length; i++)
+	  this[i] = new Array(y);
+	}
 	
 
 
