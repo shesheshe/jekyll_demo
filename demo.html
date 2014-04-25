@@ -130,9 +130,7 @@ ex : 123,456,{7}89
 	
 	function date_list(nextDays, _class)
 	{
-	
 		var now_time = new Date();
-		var now_time_tmp = new Date();
 		var diff = parseInt(Math.abs(now_time - base_time)/(1000 * 60 * 60 * 24));
 		var data = new Array();
 		
@@ -148,8 +146,6 @@ ex : 123,456,{7}89
 					    val_date_class[_class][(diff+i+1)%5] + ' - ' + 
 					    date_format(now_time);
 		}
-
-		now_time = now_time_tmp;
 
 		ui(data);
 
