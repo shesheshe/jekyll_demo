@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>招喚圖板緊急地下城查詢器 beta - v0.0.0.1</title>
+	<title>召喚圖板緊急地下城查詢器 beta - v0.0.0.1</title>
 </head>
 <body>
 
@@ -41,8 +41,6 @@ ex : 123,456,{7}89
 	//<pre>2014/4/24 by hero, shesheshe98@hotmail.com</pre>s
 
 	var base_time = new Date(2014, 3, 1);	//2014-4-1
-	var now_time = new Date();
-	var now_time_tmp = new Date();
 	var ymd = '';
 	
 	var set = new Array();
@@ -123,17 +121,19 @@ ex : 123,456,{7}89
 		{
 			if(form.options[i].selected == true)
 			{
-				var diff = parseInt(Math.abs(now_time - base_time)/(1000 * 60 * 60 * 24));
-				
-				date_list(diff, nextDays, set2number[set[i]]);
+				date_list(nextDays, set2number[set[i]]);
 			}
 		
 		}
 
 	}
 	
-	function date_list(diff, nextDays, _class)
+	function date_list(nextDays, _class)
 	{
+	
+		var now_time = new Date();
+		var now_time_tmp = new Date();
+		var diff = parseInt(Math.abs(now_time - base_time)/(1000 * 60 * 60 * 24));
 		var data = new Array();
 		
 		data[0] = val[(diff)%5] + ' - ' + 
@@ -148,11 +148,11 @@ ex : 123,456,{7}89
 					    val_date_class[_class][(diff+i+1)%5] + ' - ' + 
 					    date_format(now_time);
 		}
-		
-		now_time.setDate(now_time_tmp.getDate());
-		
+
+		now_time = now_time_tmp;
+
 		ui(data);
-	
+
 	}
 	
 	function ui(data)
@@ -171,9 +171,9 @@ ex : 123,456,{7}89
 	
 	function date_format(date)
 	{
-		return now_time.getFullYear() + '/' + 
-		       (now_time.getMonth()+1) + '/' + 
-			   now_time.getDate() + ' (' + day2str[now_time.getDay()] + ')';
+		return date.getFullYear() + '/' + 
+		       (date.getMonth()+1) + '/' + 
+			   date.getDate() + ' (' + day2str[date.getDay()] + ')';
 	}
 	
 	function select_number(number)
