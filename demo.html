@@ -1,6 +1,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scaleble=yes, initial-scale=1.0, maximum-scale=3.0">
 	<title>召喚圖板緊急地下城查詢器 beta - v0.0.0.1</title>
 </head>
 <body>
@@ -39,7 +40,14 @@ ex : 123,456,{7}89
 <script>
 
 	//<pre>2014/4/24 by hero, shesheshe98@hotmail.com</pre>s
-
+	/**
+		2014/4/23 - 基礎查詢, ui無修正
+		2014/4/25 - 二次點擊會計算到下個月, bug修正
+		2014/4/26 - 手機ui優化
+	
+	**/
+	
+	
 	var base_time = new Date(2014, 3, 1);	//2014-4-1
 	var ymd = '';
 	
